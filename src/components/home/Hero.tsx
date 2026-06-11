@@ -2,33 +2,37 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
+const BASE = 'https://mount-moriah-school-main.vercel.app/images'
+
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80',
-    title: 'Nurturing Minds,\nBuilding Character',
-    subtitle: 'Excellence in Christian education — shaping tomorrow\'s leaders today.',
+    image: `${BASE}/hero1.jpg`,
+    title: 'Learning Today,\nFor A Better Tomorrow',
+    subtitle: 'Providing quality Christian education that nurtures academic excellence, discipline and godly character.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80',
-    title: 'Where Faith Meets\nAcademic Excellence',
-    subtitle: 'A holistic learning environment grounded in Christian values and the CBC curriculum.',
+    image: `${BASE}/hero2.jpg`,
+    title: 'Academic Excellence\nWith Christian Values',
+    subtitle: 'Empowering learners through the CBC curriculum in a caring and supportive environment.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1600&q=80',
-    title: 'Every Child Has\nGod-Given Potential',
-    subtitle: 'We create safe, stimulating spaces for your child to discover and fulfill their purpose.',
+    image: `${BASE}/hero3.jpg`,
+    title: 'Building Future\nLeaders Today',
+    subtitle: 'Developing confident, responsible and innovative learners prepared for the future.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80',
-    title: 'Modern Classrooms,\nTimeless Values',
-    subtitle: 'State-of-the-art facilities combined with discipline, integrity and godly character.',
+    image: `${BASE}/hero4.jpg`,
+    title: 'A Safe And\nNurturing Environment',
+    subtitle: 'Every child is valued, encouraged and inspired to achieve their full potential.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600&q=80',
-    title: 'Begin the Journey\nToday',
-    subtitle: 'Enroll your child at Mount Moriah International Christian School.',
+    image: `${BASE}/hero5.jpg`,
+    title: 'Join Mount Moriah\nInternational Christian School',
+    subtitle: 'Admissions are open for PP1, PP2, Primary and Junior Secondary.',
   },
 ]
+
+const LOGO = `${BASE}/logo.png`
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
@@ -63,8 +67,14 @@ export default function Hero() {
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="max-w-2xl">
-            <div className="inline-block bg-secondary-500 text-white text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded mb-5">
-              Mount Moriah International Christian School
+            <div className="mb-5">
+              <img src={LOGO} alt="Mount Moriah Logo" className="w-24 h-24 object-contain mb-4" />
+              <div className="inline-block bg-secondary-500 text-white text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded">
+                Mount Moriah International Christian School
+              </div>
+              <p className="text-secondary-300 mt-2 text-sm md:text-base font-medium">
+                Learning Today for a Better Tomorrow
+              </p>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5 whitespace-pre-line">
               {slides[current].title}
@@ -75,11 +85,11 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4">
               <Link to="/admissions"
                 className="bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3 rounded-lg transition-colors shadow-lg">
-                Start a Journey
+                Apply for Admission
               </Link>
               <Link to="/about"
                 className="border-2 border-white text-white hover:bg-white hover:text-primary-500 font-bold px-8 py-3 rounded-lg transition-colors">
-                Learn More
+                About Our School
               </Link>
             </div>
           </div>

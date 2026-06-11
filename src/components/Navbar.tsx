@@ -47,11 +47,14 @@ const navItems: NavItem[] = [
   { label: 'Contact Us', to: '/contact' },
 ]
 
+const LOGO = 'https://mount-moriah-school-main.vercel.app/images/logo.png'
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
+  const [logoError, setLogoError] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -68,12 +71,22 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-heading font-bold text-lg select-none">
-            MM
-          </div>
+          {!logoError ? (
+            <img
+              src={LOGO}
+              alt="Mount Moriah International Christian School Logo"
+              className="w-14 h-14 object-contain rounded-full bg-white p-1"
+              onError={() => setLogoError(true)}
+            />
+          ) : (
+            <div className="w-14 h-14 bg-primary-500 rounded-full flex items-center justify-center text-white font-heading font-bold text-lg select-none">
+              MM
+            </div>
+          )}
           <div className="hidden sm:block">
             <div className="font-heading font-bold text-primary-500 text-base leading-tight">Mount Moriah</div>
             <div className="text-xs text-secondary-500 font-semibold tracking-wide leading-tight">INTERNATIONAL CHRISTIAN SCHOOL</div>
+            <div className="text-[10px] text-gray-500 italic">Learning Today for a Better Tomorrow</div>
           </div>
         </Link>
 
